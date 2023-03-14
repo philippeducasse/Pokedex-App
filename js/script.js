@@ -1,4 +1,31 @@
-let pokemonList=[
+
+// for (let i=0; i<pokemonList.length; i++){
+//     document.write(pokemonList[i].name   +  '  (height:  '  + pokemonList[i].height  + ')  ')
+//     if (pokemonList[i].height>10){
+//         document.write(" - Wow, that´s big! <br>") 
+//     } else {
+//         document.write("<br>")
+//     }
+// }
+
+// PART 1
+
+// pokemonList.forEach(function(pokemon) {
+//     document.write(pokemon.name + " (height: " + pokemon.height + "), ");
+// });
+
+
+// PART 2
+
+function getAll () {
+    return pokemonRepository
+    };
+function add (item){  
+    pokemonRepository.push(item)
+};
+
+let pokemonRepository = (function() {
+    let pokemonList=[
     {
         name:'Bulbasaur',
         height: 4,
@@ -19,16 +46,15 @@ let pokemonList=[
         height: 10,
         type: ['psychic','dark']
     }
-]
-// for (let i=0; i<pokemonList.length; i++){
-//     document.write(pokemonList[i].name   +  '  (height:  '  + pokemonList[i].height  + ')  ')
-//     if (pokemonList[i].height>10){
-//         document.write(" - Wow, that´s big! <br>") 
-//     } else {
-//         document.write("<br>")
-//     }
-// }
+];
+    return {
+        add: function (item){
+            pokemonRepository.add(item);
+        },
+        getAll: function () {
+            return pokemonList;
+        }
+    };
+})();
 
-pokemonList.forEach(function(pokemon) {
-    document.write(pokemon.name + " (height: " + pokemon.height + "), ");
-});
+document.write (pokemonRepository.getAll());
