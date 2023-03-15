@@ -17,44 +17,29 @@
 
 // PART 2
 
-function getAll () {
-    return pokemonRepository
-    };
-function add (item){  
-    pokemonRepository.push(item)
-};
 
-let pokemonRepository = (function() {
+
+let pokemonRepository = (function(){
+
     let pokemonList=[
-    {
-        name:'Bulbasaur',
-        height: 4,
-        type: ['grass','poison']
-    },
-    {
-        name:'Charmander',
-        height:12,
-        type: ['fire','fight']
-    },
-    {
-        name:'Squirtle',
-        height:9,
-        type: ['water', 'ice']
-    },
-    {
-        name:'Hypno',
-        height: 10,
-        type: ['psychic','dark']
-    }
-];
-    return {
-        add: function (item){
-            pokemonRepository.add(item);
-        },
-        getAll: function () {
-            return pokemonList;
+    {name:'Bulbasaur', height: 4, type: ['grass','poison']},
+    {name:'Charmander', height:12, type: ['fire','fight']},
+    {name:'Squirtle', height:9, type: ['water', 'ice']},
+    {name:'Hypno', height: 10, type: ['psychic','dark']}
+    ];
+
+    function getAll () {
+        return pokemonList
+        };
+    function add(pokemon){
+            pokemonRepository.add(pokemon);
         }
-    };
-})();
+        // dont get this bit
+    return { 
+        getAll: getAll, 
+        add: add,
+     }
+    }   
+    )();
 
 document.write (pokemonRepository.getAll());
