@@ -34,7 +34,41 @@ let pokemonRepository = (function(){
     function add(pokemon){
             pokemonRepository.add(pokemon);
         } 
-        // ATTEMPT AT BONUS: DOESNT WORK "POKEMON IS NOT DEFINED"
+    function addListItem(pokemon){
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+            pokemonList.appendChild(listItem);
+        let button = document.createElement('button');
+            button.innerText = pokemon.name;
+            button.classList.add = 'new-pokemon';   
+        listItem.appendChild(button);
+        buttonClick(button,pokemon);
+    }
+
+    function showDetails(pokemon){
+        console.log(pokemon);
+    }
+// bonus task
+     function buttonClick(button,pokemon){
+        button.addEventListener('click',function(){showDetails(pokemon)})
+     }
+
+    return { 
+        getAll: getAll, 
+        add: add,
+        addListItem: addListItem,
+        showDetails: showDetails,
+        buttonClick: buttonClick
+     }
+    }   
+)();
+
+
+
+pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem (pokemon)
+});
+   // ATTEMPT AT BONUS: DOESNT WORK "POKEMON IS NOT DEFINED"
         // if (
         //     typeof pokemon === 'object' &
         //     typeof pokemon.name === 'string' &
@@ -47,18 +81,12 @@ let pokemonRepository = (function(){
         //     }
 
         // dont get this bit
-    return { 
-        getAll: getAll, 
-        add: add,
-     }
-    }   
-)();
-
 // forEach loop
 
-pokemonRepository.getAll().forEach(function(pokemon) {
-    document.write(pokemon.name + " (weight: " + pokemon.weight + "), ");
-        }); 
+// pokemonRepository.getAll().forEach(function(pokemon) {
+    
+//     document.write(pokemon.name + " (weight: " + pokemon.weight + "), ");
+//         }); 
 // how would I add a pokemon using the add function?
 
 // ATTEMPT AT LAST BONUS PART 
@@ -68,4 +96,14 @@ pokemonRepository.getAll().forEach(function(pokemon) {
 
 // console.log (result)
 
+// pokemonRepository.getAll().forEach(function(pokemon) {
+//     let newList = document.querySelector('.pokemon-list');
+//     let listItem = document.createElement('li');
+//         newList.appendChild(listItem);
+//     let button = document.createElement('button');
+//         button.innerText = pokemon.name;
+//         button.classList.add = 'new-pokemon';
+//     listItem.appendChild(button);
+
+//             }); 
 

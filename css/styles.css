@@ -4,3 +4,15 @@ body {
     background-color: rgb(229, 238, 238);
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.pokemon-list {
+    text-decoration: wavy;
+    font-style: italic;
+    border: 2px blue solid;
+}
+
+.new-pokemon {
+    text-decoration: none;
+    font-style: normal;
+    border: 2px red solid;
+}
