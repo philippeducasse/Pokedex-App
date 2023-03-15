@@ -10,9 +10,9 @@
 
 // PART 1
 
-// pokemonList.forEach(function(pokemon) {
-//     document.write(pokemon.name + " (height: " + pokemon.height + "), ");
-// });
+// // pokemonList.forEach(function(pokemon) {
+// //     document.write(pokemon.name + " (height: " + pokemon.height + "), ");
+// // });
 
 
 // PART 2
@@ -22,10 +22,10 @@
 let pokemonRepository = (function(){
 
     let pokemonList=[
-    {name:'Bulbasaur', height: 4, type: ['grass','poison']},
-    {name:'Charmander', height:12, type: ['fire','fight']},
-    {name:'Squirtle', height:9, type: ['water', 'ice']},
-    {name:'Hypno', height: 10, type: ['psychic','dark']}
+    {name:'Bulbasaur', weight: 4, type: ['grass','poison']},
+    {name:'Charmander', weight:12, type: ['fire','fight']},
+    {name:'Squirtle', weight:9, type: ['water', 'ice']},
+    {name:'Hypno', weight: 10, type: ['psychic','dark']}
     ];
 
     function getAll () {
@@ -33,13 +33,39 @@ let pokemonRepository = (function(){
         };
     function add(pokemon){
             pokemonRepository.add(pokemon);
-        }
+        } 
+        // ATTEMPT AT BONUS: DOESNT WORK "POKEMON IS NOT DEFINED"
+        // if (
+        //     typeof pokemon === 'object' &
+        //     typeof pokemon.name === 'string' &
+        //     typeof pokemon.weight === 'number' &
+        //     Array.isArray(pokemon.type)
+        //     ) {
+        //         pokemonList.push(pokemon);
+        //     } else {
+        //         console.log('Invalid') 
+        //     }
+
         // dont get this bit
     return { 
         getAll: getAll, 
         add: add,
      }
     }   
-    )();
+)();
 
-document.write (pokemonRepository.getAll());
+// forEach loop
+
+pokemonRepository.getAll().forEach(function(pokemon) {
+    document.write(pokemon.name + " (weight: " + pokemon.weight + "), ");
+        }); 
+// how would I add a pokemon using the add function?
+
+// ATTEMPT AT LAST BONUS PART 
+
+
+// let result = pokemonRepository.filter (pokemon => pokemon.name === pokemon);
+
+// console.log (result)
+
+
