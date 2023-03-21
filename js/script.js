@@ -68,16 +68,16 @@ let pokemonRepository = (function(){
         })
      }
 // bonus task 1.7
+
+let mainTitle = document.querySelector('.main-title');
+let loadingMessage = document.querySelector('.loading-message');
+
      function showLoadingMessage(){
-        let mainTitle = document.querySelector('.main-title');
-        let loadingMessage = document.querySelector('.loading-message');
             loadingMessage.innerText = 'loading...'
             mainTitle.appendChild(loadingMessage);
      }
 
      function hideLoadingMessage(){
-        let mainTitle = document.querySelector('.main-title');
-        let loadingMessage = document.querySelector('.loading-message');
         mainTitle.appendChild(loadingMessage);
         loadingMessage.classList.add('invisible');
      }
