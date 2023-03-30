@@ -32,14 +32,7 @@ let pokemonRepository = (function(){
         pokemonList.appendChild(listItem)
         buttonClick(button,pokemon);
     }
-
-    // window.addEventListener('keydown', (e) => {
-        
-    //     if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-    //       hideDetails();  
-    //     }
-    //   });
-
+    
     function showDetails(pokemon) {
         loadDetails(pokemon).then(function () {
             showModal(pokemon);
