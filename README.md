@@ -1,21 +1,29 @@
-Part 1: forEach() Loops
+# CareerFoundry Fullstack Immersion 
 
-Use a forEach() function instead of the for loop you have to iterate over the Pokémon in your pokemonList array in order to print the details of each one. We recommend revisiting and carefully studying the userList example in this Exercise before doing this part of the task. Commit and push the changes to your GitHub repository.
+**Achievement One**
 
-Part 2: IIFE
 
-    In the “scripts.js” file of your project, wrap your pokemonList array in an IIFE to avoid accidentally accessing the global state.
-    Before anything else, create a new pokemonRepository variable to hold what your IIFE will return, then assign the IIFE to that variable.
-    The IIFE should return an object with the following public functions assigned as keys:
-        getAll: return all items (pokemonRepository.getAll(); should return the pokemonList array)
-        add: add a single item to the pokemonList array (calling pokemonRepository.add(item); should add the Pokémon referred to with item to the pokemonList array)
-    Make sure both functions are defined separately with the function keyword. Also, the IIFE returns only an object with the same names for keys as values (see the last paragraph of the Exercise)
-    Outside of and below the IIFE, you should already have a forEach() loop that iterates over each Pokémon in the repository. But since you’ve limited access to the pokemonList array that’s inside the IIFE (so that it’s only accessible through one of the two functions returned by the IIFE), you need to update the loop code to cope with the new changes. Essentially, you need to use one of the two functions returned by the IIFE in order to retrieve the pokemonList array.
-    Commit and push the changes to your GitHub repository. If all has gone well, your “index.html” file should look the same as before, but the code in "scripts.js" will look a whole lot more complicated. It’s also much more stable and ready to grow into a real app!
-    Submit the link to your GitHub repository here. Feel free to share additional thoughts or ask questions on your submissions page.
+## The Project
 
-Bonus Task
+In this project, I had to write the code for retrieving data from an external API using Javascript. The app designed retrieves Pokémon data from the API and loads the Pokémon names on the screen. Each name corresponds to a button, and when the button is clicked additional details, such as weight, height, type of pokémon, and an image is displayed. These details are again loaded asychronously from the API.
 
-    Want even more practice? You may have noticed that the add() function lets you add anything to pokemonList within the repository. You can even add strings or numbers. That’s not good. In a real application, you’d want to make sure pokemonList can only be modified with the correct type of data. Inside the addv function, you can check if the typeof parameter is an object. In combination with a conditional, make sure you can only add the passed argument of the function to pokemonList if it’s an object.
-    In addition to the type, you can also validate whether all Object.keys() of the parameter are equal to the specific keys you expect.
-    If you’re feeling truly adventurous, you can take a look at how the filter() function works and create a whole new public function for pokemonRepository that allows you to find specific Pokémon only by name.
+Initally, vanilla JavaScript was used. The first few tasks consisted of learning the basics of Javascript, learning concept such as variables, conditionals, functions, and more. Concretely, I used a forEach loop running through an array to display names on a screen. I then moved on to loading this array dynamically, using JSON objects, DOM interaction, and Ajax. After loading the array of Pokemons onto the browser, I then had to create modals that oppened and displayed the details in a modal window. I also looked into an alternative to vanilla JS, Jquery. Finally, I appplied some styling to the app by using an UI Interface, Bootstrap.
+
+## Skills Acquired
+
+- Javascript basics
+- DOM interaction 
+- Jquery basics
+- Ajax
+- Bootstrap
+- Debugging
+
+## Challenges Faced
+
+The most challenging aspect of this achievement was understanding functional programming using vanilla JS. Having only been exposed to HTML and CSS so far, learning JS proved to be much more demanding; as I did not have the direct feedback that html and CSS provide. Instead, I learned how to read error messages, and try to understand, disect and debug JS code. 
+
+Another, more specific challenge faced was that I found it very hard to display the images of the Pokémons in the modal. Initially i did not quite undertand the syntax used to acces specific properties, so this made retrieving them quite challenging.
+
+## Credits
+
+Thank you to my mentor from CareerFoundry, Treasure Kabareebe & my tutor Jonathan Nshuti. Special thanks to my friend Stephen Duke. 
