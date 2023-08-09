@@ -1,13 +1,14 @@
-# CareerFoundry Fullstack Immersion 
-
-**Achievement One**
-
+## Pokedex App
 
 ## The Project
 
-In this project, I had to write the code for retrieving data from an external API using Javascript. The app designed retrieves Pokémon data from the API and loads the Pokémon names on the screen. Each name corresponds to a button, and when the button is clicked additional details, such as weight, height, type of pokémon, and an image is displayed. These details are again loaded asychronously from the API.
+In this project, I had to write the code for retrieving data from an external API using Javascript. The app designed retrieves Pokémon data from the API and dynamically loads the Pokémon names on the screen. Each name corresponds to a button, and when the button is clicked additional details, such as weight, height, type of pokémon, and an image is displayed. These details are again loaded asychronously from the API.
 
-Initally, vanilla JavaScript was used. The first few tasks consisted of learning the basics of Javascript, learning concept such as variables, conditionals, functions, and more. Concretely, I used a forEach loop running through an array to display names on a screen. I then moved on to loading this array dynamically, using JSON objects, DOM interaction, and Ajax. After loading the array of Pokemons onto the browser, I then had to create modals that oppened and displayed the details in a modal window. I also looked into an alternative to vanilla JS, Jquery. Finally, I appplied some styling to the app by using an UI Interface, Bootstrap.
+Initially, vanilla JavaScript was used. The first few tasks consisted of learning the basics of Javascript, learning concept such as variables, conditionals, functions, and more. Concretely, I used a forEach loop running through an array to display names on a screen. I then moved on to loading this array dynamically, using JSON objects, DOM interaction, and Ajax. After loading the array of Pokemons onto the browser, I then had to create modals that oppened and displayed the details in a modal window. I also looked into an alternative to vanilla JS, Jquery. Finally, I appplied some styling to the app by using an UI interface, Bootstrap.
+
+## How to run the project locally
+
+As this project was built using mostly vanilla JS, running this code is fairly straightforward. Once the repository is cloned, open the index.html page in the browser of your choice. 
 
 ## Skills Acquired
 

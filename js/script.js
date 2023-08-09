@@ -8,10 +8,7 @@ let pokemonRepository = (function () {
         return pokemonList
     };
     function add(pokemon) {
-        // if( typeof pokemon === 'name' && 'detailsURL' in pokemon){
         pokemonList.push(pokemon);
-        // } else {
-        //     console.log('invalid pokemmon');
     }
 
     function addListItem(pokemon) {
@@ -147,34 +144,59 @@ searchBar.addEventListener('input', (input) => {
     filterPokemons(searchValue);
 })
 
+let filteredPokemons = [];
 
 function filterPokemons(searchInput) {
     let value = searchInput.toLowerCase();
     console.log(value);
     console.log(allPokemons)
-    let filteredPokemons = allPokemons.filter((pokemon) => {
-       return pokemon.name.includes(value);
+    filteredPokemons = allPokemons.filter((pokemon) => {
+        return pokemon.name.includes(value);
     })
     console.log(filteredPokemons);
-    // allPokemons = [];
-    
+
 }
 
-function updatePokemons(filteredPokemons){
-    allPokemons= [];
-    pokemonRepository.addListItem(filteredPokemons)
-    console.log('click')
+function updatePokemons(filteredPokemons) {
+    let pokemonList = document.querySelector('.pokemon-list');
+    pokemonList.innerHTML = '';
+    if (filteredPokemons.length === 0) {
+        const noItem = document.createElement('p')
+        noItem.innerText = 'No Pokemons found!'
+        pokemonList.appendChild(noItem)
+
+        const button = document.createElement('button');
+        button.innerText= 'Reload List';
+        button.classList.add('btn', 'btn-primary');
+        button.addEventListener('click', function () {
+            pokemonList.innerHTML = '';
+            allPokemons.forEach(function (pokemon) {
+            pokemonRepository.addListItem(pokemon)})})
+            pokemonList.appendChild(button);
+
+        console.log(noItem)
+    } else if (!filteredPokemons) {
+        allPokemons.forEach(function (pokemon) {
+            pokemonRepository.addListItem(pokemon)
+        })
+    } else {
+        filteredPokemons.forEach(function (pokemon) {
+            pokemonRepository.addListItem(pokemon)
+        })
+        const button = document.createElement('button');
+        button.innerText= 'Reaload all Pokemons';
+        button.classList.add('btn', 'btn-primary');
+        button.addEventListener('click', function () {
+            pokemonList.innerHTML = '';
+            allPokemons.forEach(function (pokemon) {
+            pokemonRepository.addListItem(pokemon)})})
+            pokemonList.appendChild(button);
+    }
 }
 const searchButton = document.querySelector('#searchButton')
-searchButton.addEventListener('click', updatePokemons);
+searchButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    updatePokemons(filteredPokemons)
+});
 
-
-
-
-
-// if (value && value.trim().length > 0) {
-// value = value.trim().toLowerCase();
-//     filterPokemons(value);
-//     pokemonRepository.addListItem(filteredPokemons)
-// }
-
+// add if statement to add text if no pokemons appear
