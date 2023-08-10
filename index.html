@@ -8,7 +8,7 @@
   <!-- bootstrap css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="dist/style.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body>
@@ -22,9 +22,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="https://pokeapi.co/api/v2/pokemon/?limit=150">Sources</a>
         </li>
@@ -33,9 +30,34 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" id= "searchButton" type="submit">Search</button>
       </form>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Filter Pokemons by type
+        </button>
+        <div class="dropdown-menu dropdown-menu-center">
+          <button class="dropdown-item all" type="button">All</button>
+          <button class="dropdown-item grass" type="button">Grass</button>
+          <button class="dropdown-item fire" type="button">Fire</button>
+          <button class="dropdown-item water" type="button">Water</button>
+          <button class="dropdown-item normal" type="button">Normal</button>
+          <button class="dropdown-item electric" type="button">Electric</button>
+          <button class="dropdown-item psychic" type="button">Psychic</button>
+          <button class="dropdown-item ghost" type="button">Ghost</button>
+          <button class="dropdown-item poison" type="button">Poison</button>
+          <button class="dropdown-item ice" type="button">Ice</button>
+          <button class="dropdown-item flying" type="button">Flying</button>
+          <button class="dropdown-item bug" type="button">Bug</button>
+          <button class="dropdown-item rock" type="button">Rock</button>
+          <button class="dropdown-item steel" type="button">Steel</button>
+          <button class="dropdown-item ground" type="button">Ground</button>
+          <button class="dropdown-item fighting" type="button">Fighting</button>
+          <button class="dropdown-item dragon" type="button">Dragon</button>
+          <button class="dropdown-item fairy" type="button">Fairy</button>
+        </div>
+      </div>
     </div>
   </nav>
   <h1 class="main-title">Pokédex</h1>
