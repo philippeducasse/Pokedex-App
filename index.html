@@ -31,32 +31,30 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" id= "searchButton" type="submit">Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" id="searchButton" type="submit">Search</button>
       </form>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Filter Pokemons by type
-        </button>
-        <div class="dropdown-menu dropdown-menu-center">
-          <button class="dropdown-item all" type="button">All</button>
-          <button class="dropdown-item grass" type="button">Grass</button>
-          <button class="dropdown-item fire" type="button">Fire</button>
-          <button class="dropdown-item water" type="button">Water</button>
-          <button class="dropdown-item normal" type="button">Normal</button>
-          <button class="dropdown-item electric" type="button">Electric</button>
-          <button class="dropdown-item psychic" type="button">Psychic</button>
-          <button class="dropdown-item ghost" type="button">Ghost</button>
-          <button class="dropdown-item poison" type="button">Poison</button>
-          <button class="dropdown-item ice" type="button">Ice</button>
-          <button class="dropdown-item flying" type="button">Flying</button>
-          <button class="dropdown-item bug" type="button">Bug</button>
-          <button class="dropdown-item rock" type="button">Rock</button>
-          <button class="dropdown-item steel" type="button">Steel</button>
-          <button class="dropdown-item ground" type="button">Ground</button>
-          <button class="dropdown-item fighting" type="button">Fighting</button>
-          <button class="dropdown-item dragon" type="button">Dragon</button>
-          <button class="dropdown-item fairy" type="button">Fairy</button>
-        </div>
+      <div class="type-container">
+        <label for="type-filter">Filter by type:</label>
+        <select name="type-filter" id="type-filter" aria-placeholder="List of Pokemon types to filter">
+          <option value="all" class="all">All</option>
+          <option value="grass" class="grass">Grass</option>
+          <option value="fire" class="fire">Fire</option>
+          <option value="water" class="water">Water</option>
+          <option value="normal" class="normal">Normal</option>
+          <option value="electric" class="electric">Electric</option>
+          <option value="psychic" class="psychic">Psychic</option>
+          <option value="ghost" class="ghost">Ghost</option>
+          <option value="poison" class="poison">Poison</option>
+          <option value="ice" class="ice">Ice</option>
+          <option value="flying" class="flying">Flying</option>
+          <option value="bug" class="bug">Bug</option>
+          <option value="rock" class="rock">Rock</option>
+          <option value="steel" class="steel">Steel</option>
+          <option value="ground" class="ground">Ground</option>
+          <option value="fighting" class="fighting">Fighting</option>
+          <option value="dragon" class="dragon">Dragon</option>
+          <option value="fairy" class="fairy">Fairy</option>
+        </select>
       </div>
     </div>
   </nav>
