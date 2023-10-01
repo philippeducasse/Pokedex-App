@@ -10,7 +10,11 @@ let pokemonRepository = (function () {
     function add(pokemon) {
         pokemonList.push(pokemon);
     }
-
+    
+    // sort pokemon by order
+    function sortPokemonByNumber(pokemonData) {
+        return pokemonData.sort((a, b) => a.id - b.id);
+    }
     // adds pokemon to list element
 
     function addListItem(pokemon) {
@@ -18,12 +22,14 @@ let pokemonRepository = (function () {
         let listItem = document.createElement('li');
         let button = document.createElement('button');
 
+
+
         loadDetails(pokemon).then(function () { // loadDetails is needed to get type and image 
             listItem.classList.add('list-group-item')
             pokemonList.appendChild(listItem);
-            button.innerHTML += "<h1>" + pokemon.id + ". " + pokemon.name + "</h1>";
+            button.innerHTML += "<h3>" + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) + "</h3>";
             button.innerHTML += '<img src="' + pokemon.imageURL + '" alt="' + pokemon.name + "'s image and button\" >";
-            button.classList.add('btn', 'btn-primary', pokemon.types[0]);
+            button.classList.add('btn', 'pokemon-button', 'btn-primary', pokemon.types[0]);
             button.setAttribute('data-toggle', 'modal');
             button.setAttribute('data-target', '.modal');
             button.setAttribute('type', 'button');
@@ -48,12 +54,12 @@ let pokemonRepository = (function () {
         let modalTitle = $('.modal-title');
         modalTitle.empty();
         modalBody.empty();
-        let pokemonName = $('<h1>' + pokemon.name + '</h1>');
+        let pokemonName = $('<h1>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) + '</h1>');
         let pokemonImage = $('<img class = modal-image>');
 
         pokemonImage.attr("src", pokemon.modalImageURL);
-        let pokemonWeight = $('<p>' + 'Weight : ' + pokemon.weight + '</p>');
-        let pokemonHeight = $('<p>' + 'Height : ' + pokemon.height + '</p>');
+        let pokemonWeight = $('<p>' + 'Weight : ' + pokemon.weight + ' lb' + '</p>');
+        let pokemonHeight = $('<p>' + 'Height : ' + pokemon.height + ' ft' + '</p>');
         let pokemonType = $('<p>' + 'Type : ' + pokemon.types[0] + '</p>')
         if (pokemon.types.length > 1) {
             pokemonType.append(", " + pokemon.types[1]);
@@ -79,11 +85,20 @@ let pokemonRepository = (function () {
             return response.json();
         }).then(function (json) {
             hideLoadingMessage();
-            json.results.forEach(function (item) {
-                let pokemon = {
-                    name: item.name,
-                    detailsUrl: item.url
-                };
+            // this isn't working / not doing anything
+            const sortedPokemonList = sortPokemonByNumber(
+
+                json.results.forEach(function (item, index) {
+                    let pokemon = {
+                        id: index + 1,
+                        name: item.name,
+                        detailsUrl: item.url
+                    };
+                    add(pokemon);
+                })
+            );
+            pokemonList = sortedPokemonList; // Update the pokemonList with sorted data
+            pokemonList.forEach(function (pokemon) {
                 add(pokemon);
             });
         }).catch(function (e) {
@@ -151,8 +166,6 @@ let pokemonRepository = (function () {
 
 // this is outside the IIFE
 
-
-
 // gets all pokemons
 
 let allPokemons = pokemonRepository.getAll();
@@ -173,13 +186,13 @@ searchBar.addEventListener('input', (input) => {
 })
 
 let filteredPokemons = [];
-let filteredByTypePokemons = [];
 let selectedType = '';
+let searchValue;
 
 function filterPokemons(searchInput) {
-    let value = searchInput.toLowerCase();
+    searchValue = searchInput.toLowerCase();
     filteredPokemons = allPokemons.filter((pokemon) => {
-        return pokemon.name.includes(value);
+        return pokemon.name.includes(searchValue);
     })
 
 }
@@ -190,39 +203,47 @@ let typeFilters = document.querySelector('#type-filter');
 
 typeFilters.addEventListener('change', function () {
 
-        selectedType = typeFilters.value
+    selectedType = typeFilters.value
+    if (!typeFilters.classList.contains(selectedType)) {
+        typeFilters.className = "";
+        typeFilters.classList.add(selectedType);
+    }
 
-        if (!typeFilters.classList.contains(selectedType)) {
-            typeFilters.className = "";
-            typeFilters.classList.add(selectedType);
-        }
-        filteredByTypePokemons = allPokemons.filter(function (pokemon) {
-            return pokemon.types.includes(selectedType);
-        })
-        filteredByTypePokemons.forEach(function (pokemon) {
-            pokemonRepository.addListItem(pokemon)
-        })
-        
+    // this will always filter all pkms
+    filteredPokemons = allPokemons.filter(function (pokemon) {
+        return pokemon.types.includes(selectedType);
+    })
+    filteredPokemons.forEach(function (pokemon) {
+        pokemonRepository.addListItem(pokemon)
+    })
 
-    
-        updatePokemons(filteredByTypePokemons)
-    });
+    updatePokemons(filteredPokemons);
+    if (selectedType === "all") {
+        allPokemons.forEach(function (pokemon) {
+            pokemonRepository.addListItem(pokemon);
+        });
+    }
+});
 
 
 // updates the pokemon list based on the search criteria
 
+// think of all the conditions that will happen when filtering
+
 function updatePokemons(filteredPokemons) {
     let pokemonList = document.querySelector('.pokemon-list');
     pokemonList.innerHTML = '';
-    if (filteredPokemons.length === 0 && selectedType !== 'All') {
+
+    if (filteredPokemons.length === 0 && selectedType !== 'all') {
         const noItem = document.createElement('p')
         noItem.innerText = 'No Pokemons found!'
         pokemonList.appendChild(noItem)
         const button = document.createElement('button');
-        button.innerText = 'Reload List';
+        button.innerText = 'Reload All Pokemons';
         button.classList.add('btn', 'btn-primary');
         button.addEventListener('click', function () {
             pokemonList.innerHTML = '';
+            selectedType = 'all';
             searchBar.value = '';
             allPokemons.forEach(function (pokemon) {
                 pokemonRepository.addListItem(pokemon)
@@ -234,34 +255,34 @@ function updatePokemons(filteredPokemons) {
         allPokemons.forEach(function (pokemon) {
             pokemonRepository.addListItem(pokemon)
         })
-    } else if (filteredByTypePokemons.length > 0) {
+    } else if (filteredPokemons.length > 0) {
         const button = document.createElement('button');
-        button.innerText = 'Reaload all Pokemons';
+        button.innerText = 'Reload all Pokemons';
         button.classList.add('btn', 'btn-primary');
+        console.log('click');
         button.addEventListener('click', function () {
             pokemonList.innerHTML = '';
+            searchBar.value = '';
             allPokemons.forEach(function (pokemon) {
                 pokemonRepository.addListItem(pokemon)
             })
         })
-        selectedType.value = 'All';
+        selectedType = 'all';
         pokemonList.innerHTML = '';
-        filteredByTypePokemons.forEach(function(pokemon){
+        filteredPokemons.forEach(function (pokemon) {
             pokemonRepository.addListItem(pokemon)
         })
         pokemonList.appendChild(button);
-    } else if (selectedType == "all") {
-        console.log('click')
-        allPokemons.forEach(function (pokemon) {
-            pokemonRepository.addListItem(pokemon);
-        });
+    } else if (selectedType = 'all') {
+        const button = document.querySelector('.btn');
+        button.innerHTML = '';
     }
     else {
         filteredPokemons.forEach(function (pokemon) {
             pokemonRepository.addListItem(pokemon)
         })
         const button = document.createElement('button');
-        button.innerText = 'Reaload all Pokemons';
+        button.innerText = 'Reload all Pokemons';
         button.classList.add('btn', 'btn-primary');
         button.addEventListener('click', function () {
             pokemonList.innerHTML = '';

@@ -6,6 +6,10 @@ Goal: To build a small web application with HTML, CSS, and JavaScript that loads
 
 https://philippeducasse.github.io/Pokedex-App/
 
+## Screenshot
+
+<img src ="img/Screenshot.png">
+
 ## The Project
 
 In this project, I had to write the code for retrieving data from an external API using Javascript. The app designed retrieves Pokémon data from the API and dynamically loads the Pokémon names on the screen. Each name corresponds to a button, and when the button is clicked additional details, such as weight, height, type of pokémon, and an image is displayed through a modal. These details are again loaded asychronously from the API(https://pokeapi.co/) using the AJAX concept.

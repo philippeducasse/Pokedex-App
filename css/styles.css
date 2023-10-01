@@ -3,9 +3,30 @@ body {
     background-color: rgb(229, 238, 238);
 }
 
+.main-title {
+    max-width: 500px;
+    max-height: 100px;
+    margin: 25px;
+}
+/* Pokemon list */
+
 .pokemon-list {
-    width:25%;
+    display: grid;
+    width:80%;
     margin:0 auto;    
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.list-group-item {
+    color: rgb(229, 238, 238);
+    background-color: rgb(229, 238, 238);
+    border: 0px;
+}
+
+.pokemon-button {
+    width: 200px;
+    height: 200px;
 }
 
 .loading-message {
@@ -20,6 +41,21 @@ body {
     overflow-y:auto;
     text-align: center;
 }
+
+/* Modal */
+
+.modal-title{
+    margin: 0 auto;
+    padding-left: 100px;
+
+}
+
+.modal-image {
+    padding: 10px;
+    max-width: 300px;
+    max-height: 300px;
+}
+
 
  /* Dropdown Button Collors */
 .all {
@@ -78,4 +114,14 @@ body {
 }
 .fairy {
     background-color: #d685ad;
+}
+#searchButton {
+    margin-right: 5px;
+}
+#type-filter {
+    background-color: white;
+    padding: 6px 12px;
+    border-color: rgb(10, 226, 10);
+    border-width: 2px;
+    border-radius: 5px;
 }
